@@ -1,7 +1,8 @@
-%option outfile="lexer.c"
+%option outfile="lid_lexer.c"
 %option noyywrap
 %option nounput
 %option noinput
+%option nodefault
 
 %{
 	int chars = 0;
@@ -17,7 +18,6 @@
 
 %%
 
-/*
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -25,4 +25,3 @@ int main(int argc, char *argv[])
 	yylex (); // < note that this will only return once with the entire input parsed: single state
 	printf("lines: %d\nwords: %d\nchars: %d\n", lines, words, chars);
 }
-*/
