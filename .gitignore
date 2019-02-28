@@ -1,4 +1,5 @@
 *_lexer.c
+*_lexer.h
 *_parser.c
 *_parser.h
 ???

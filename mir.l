@@ -1,11 +1,12 @@
-%option outfile="mid_lexer.c"
+%option outfile="mir_lexer.c"
 %option noyywrap
 %option nounput
 %option noinput
 %option nodefault
+%option prefix="cust_"
 
 %{
-#include "mid_parser.h"
+#include "mir_parser.h"
 %}
 
 %%

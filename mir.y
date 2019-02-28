@@ -1,18 +1,19 @@
-%output "mid_parser.c"
+%name-prefix "cust_"
+%output "mir_parser.c"
 %defines
 
 %{
 #include <stdio.h>
 #define YYDEBUG	1
 
-int yylex();
-void yyerror(char *msg);
+int cust_lex();
+void cust_error(char *msg);
 
 int chars = 0;
 int words = 0;
 int lines = 0;
 
-extern int yyleng;
+extern int cust_leng;
 
 %}
 
@@ -28,19 +29,19 @@ result:
 	chars++; }
  | result WORD {
  	words++;
- 	chars += yyleng; }
+ 	chars += cust_leng; }
 ;
 
 %%
 
 int main(int argc, char *argv[])
 {
-	yydebug = 1;
-	yyparse();
+	cust_debug = 1;
+	cust_parse();
 	printf("\n\nlines: %d\nwords: %d\nchars: %d\n", lines, words, chars);
 }
 
-void yyerror(char *msg)
+void cust_error(char *msg)
 {
 	printf("error: %s\n", msg);
 }
