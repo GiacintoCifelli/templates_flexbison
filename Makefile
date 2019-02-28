@@ -18,13 +18,13 @@ lid: lid.l
 	flex lid.l
 	gcc -g -o lid lid_lexer.c
 
-pid:
+pid: pid.y
 	bison pid.y
 	gcc -g -o pid pid_parser.c
 
-mid:
-	flex mid.l
+mid: mid.l mid.y
 	bison mid.y
+	flex mid.l
 	gcc -g -o mid mid_lexer.c mid_parser.c
 
 check:
@@ -39,6 +39,6 @@ else
 endif
 
 clean:
-	@touch bogus_parser.c bogus_lexer.c lid
-	rm *_parser.c *_lexer.c [lpm][ip][dr]
+	@touch bogus_parser.c bogus_parser.h bogus_lexer.c lid
+	rm *_parser.c *_parser.h *_lexer.c [lpm][ip][dr]
 

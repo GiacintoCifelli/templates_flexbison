@@ -1,4 +1,5 @@
-%output "parser.c"
+%output "mid_parser.c"
+%defines
 
 %{
 #include <stdio.h>
@@ -7,17 +8,30 @@
 int yylex();
 void yyerror(char *msg);
 
+int chars = 0;
+int words = 0;
+int lines = 0;
+
+extern int yyleng;
+
 %}
 
-%%
-
-result: ;
+%token EOL CHAR WORD
 
 %%
 
-extern int chars;
-extern int words;
-extern int lines;
+result:
+ | result EOL {
+	chars++;
+	lines++; }
+ | result CHAR {
+	chars++; }
+ | result WORD {
+ 	words++;
+ 	chars += yyleng; }
+;
+
+%%
 
 extern int yydebug;
 
@@ -25,7 +39,7 @@ int main(int argc, char *argv[])
 {
 	yydebug = 1;
 	yyparse();
-	printf("lines: %d\nwords: %d\nchars: %d\n", lines, words, chars);
+	printf("\n\nlines: %d\nwords: %d\nchars: %d\n", lines, words, chars);
 }
 
 void yyerror(char *msg)
