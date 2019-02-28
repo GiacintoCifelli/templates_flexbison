@@ -22,7 +22,7 @@
 
 int main(int argc, char *argv[])
 {
-	yylex ();
+	yylex (); // < note that this will only return once with the entire input parsed: single state
 	printf("lines: %d\nwords: %d\nchars: %d\n", lines, words, chars);
 }
 */
