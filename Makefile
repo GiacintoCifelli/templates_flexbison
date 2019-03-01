@@ -20,11 +20,13 @@ lid: lid.l
 	gcc -g -o lid lid_lexer.c
 
 pid: pid.y
-	bison pid.y
+	bison -x pid.y
+	xsltproc `bison --print-datadir`/xslt/xml2xhtml.xsl pid_parser.xml >pid.html
 	gcc -g -o pid pid_parser.c
 
 mid: mid.l mid.y
-	bison mid.y
+	bison -x mid.y
+	xsltproc `bison --print-datadir`/xslt/xml2xhtml.xsl mid_parser.xml >mid.html
 	flex mid.l
 	gcc -g -o mid mid_lexer.c mid_parser.c
 
@@ -34,11 +36,13 @@ lir: lir.l
 	gcc -g -o lir lir_lexer.c
 
 pir: pir.y
-	bison pir.y
+	bison -x pir.y
+	xsltproc `bison --print-datadir`/xslt/xml2xhtml.xsl pir_parser.xml >pir.html
 	gcc -g -o pir pir_parser.c
 
 mir: mir.l mir.y
-	bison mir.y
+	bison -x mir.y
+	xsltproc `bison --print-datadir`/xslt/xml2xhtml.xsl mir_parser.xml >mir.html
 	flex mir.l
 	gcc -g -o mir mir_lexer.c mir_parser.c
 
@@ -48,11 +52,13 @@ lpd: lpd.l
 	gcc -g -o lpd lpd_lexer.c
 
 ppd: ppd.y
-	bison ppd.y
+	bison -x ppd.y
+	xsltproc `bison --print-datadir`/xslt/xml2xhtml.xsl ppd_parser.xml >ppd.html
 	gcc -g -o ppd ppd_parser.c
 
 mpd: mpd.l mpd.y
-	bison mpd.y
+	bison -x mpd.y
+	xsltproc `bison --print-datadir`/xslt/xml2xhtml.xsl mpd_parser.xml >mpd.html
 	flex mpd.l
 	gcc -g -o mpd mpd_lexer.c mpd_parser.c
 
@@ -62,11 +68,13 @@ lpr: lpr.l
 	gcc -g -o lpr lpr_lexer.c
 
 ppr: ppr.y
-	bison ppr.y
+	bison -x ppr.y
+	xsltproc `bison --print-datadir`/xslt/xml2xhtml.xsl ppr_parser.xml >ppr.html
 	gcc -g -o ppr ppr_parser.c
 
 mpr: mpr.l mpr.y
-	bison mpr.y
+	bison -x mpr.y
+	xsltproc `bison --print-datadir`/xslt/xml2xhtml.xsl mpr_parser.xml >mpr.html
 	flex mpr.l
 	gcc -g -o mpr mpr_lexer.c mpr_parser.c
 
@@ -83,6 +91,6 @@ else
 endif
 
 clean:
-	@touch bogus_parser.c bogus_parser.h bogus_lexer.c bogus_lexer.h lid
-	rm *_parser.[ch] *_lexer.[ch] [lpm][ip][dr]
+	@touch bogus_parser.c bogus_parser.h bogus_lexer.c bogus_lexer.h lid bogus.xml bogus.html
+	rm *_parser.[ch] *_lexer.[ch] [lpm][ip][dr] *.xml *.html
 
