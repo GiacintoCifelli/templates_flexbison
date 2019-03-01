@@ -2,6 +2,9 @@ todo:
 
 x  last lexer/parser group
 
+x  comparison of FSM->BNF representation and BNF ex-novo (examples: vending, v2)
+
+x  error recovery (examples: vending)
 .  use locations
 
 .  use hash tables
