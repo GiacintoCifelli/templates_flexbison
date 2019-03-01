@@ -1,9 +1,9 @@
 %output "pir_parser.c"
+%debug
 %name-prefix "cust_"
 
 %{
 #include <stdio.h>
-#define YYDEBUG	1
 
 int cust_lex();
 void cust_error(char *msg);

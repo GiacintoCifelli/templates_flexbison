@@ -2,10 +2,11 @@
 %defines
 %define api.pure
 %parse-param { void *info }
-%lex-param { info }
+%lex-param { INFO }
 %debug
 
 %{
+#define INFO  info
 #include <stdio.h>
 #include "ppd_parser.h"
 

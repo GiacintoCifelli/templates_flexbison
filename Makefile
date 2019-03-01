@@ -56,6 +56,20 @@ mpd: mpd.l mpd.y
 	flex mpd.l
 	gcc -g -o mpd mpd_lexer.c mpd_parser.c
 
+#reentrant, custom-named
+lpr: lpr.l
+	flex lpr.l
+	gcc -g -o lpr lpr_lexer.c
+
+ppr: ppr.y
+	bison ppr.y
+	gcc -g -o ppr ppr_parser.c
+
+mpr: mpr.l mpr.y
+	bison mpr.y
+	flex mpr.l
+	gcc -g -o mpr mpr_lexer.c mpr_parser.c
+
 
 check:
 ifndef prog

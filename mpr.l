@@ -1,11 +1,12 @@
-%option outfile="mpd_lexer.c"
-%option header-file="mpd_lexer.h"
+%option outfile="mpr_lexer.c"
+%option header-file="mpr_lexer.h"
 %option noyywrap
 %option nounput
 %option noinput
 %option nodefault
 %option reentrant
 %option bison-bridge
+%option prefix="cust_"
 
 %{
 // include a header file
@@ -16,7 +17,7 @@ typedef struct {
 	int lines;
 	int retlen;
 } _stats;
-#include "mpd_parser.h"
+#include "mpr_parser.h"
 %}
 %option extra-type="_stats *"
 
