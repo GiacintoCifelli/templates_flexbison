@@ -1,17 +1,20 @@
-todo:
+todo
+=================================================================================
 
-x  last lexer/parser group
+x last lexer/parser group
 
-x  comparison of FSM->BNF representation and BNF ex-novo (examples: vending, v2)
+x comparison of FSM->BNF representation and BNF ex-novo (examples: vending, v2)
 
-x  error recovery (examples: vending)
-.  use locations
+x error recovery (examples: vending)
+x use locations
 
-.  use hash tables
-.  use stacks
-.  use lists
-.  use sorting
+x automake template
 
-.  use AST (abstract syntax tree)
+. use hash tables
+. use stacks
+. use lists
+. use sorting
+
+. use AST (abstract syntax tree)
 
 . use GLR
