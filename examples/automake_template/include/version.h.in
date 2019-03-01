@@ -1,0 +1,14 @@
+/* SPDX-License-Identifier: BSD-2-Clause-FreeBSD */
+/*******************************************************************************
+FILE:		version.h(.in)
+DESCRIPTION:	Version definition file.
+
+*******************************************************************************/
+
+#ifndef __VERSION_H__
+#define __VERSION_H__
+
+#define PROGRAM_NAME	"@PACKAGE@"
+#define PROGRAM_VERSION	"@VERSION@"
+
+#endif /* __VERSION_H__ */
