@@ -3,3 +3,13 @@
 *_parser.c
 *_parser.h
 ???
+examples/vending_machine_bnf/v2
+examples/vending_machine_bnf/v2.html
+examples/vending_machine_bnf/v2.svg
+examples/vending_machine_bnf/v2_parser.dot
+examples/vending_machine_bnf/v2_parser.xml
+examples/vending_machine_bnf/vending
+examples/vending_machine_bnf/vending.html
+examples/vending_machine_bnf/vending.svg
+examples/vending_machine_bnf/vending_parser.dot
+examples/vending_machine_bnf/vending_parser.xml
