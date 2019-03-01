@@ -10,3 +10,5 @@ x  last lexer/parser group
 .  use sorting
 
 .  use AST (abstract syntax tree)
+
+. use GLR
