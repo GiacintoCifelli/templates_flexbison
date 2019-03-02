@@ -10,11 +10,11 @@ x use locations
 
 x automake template
 
-. use hash tables
+^ use hash tables
 . use stacks
 . use lists
 . use sorting
 
-. use AST (abstract syntax tree)
+^ use AST (abstract syntax tree)
 
 . use GLR
