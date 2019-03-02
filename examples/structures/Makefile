@@ -10,12 +10,12 @@ teststack: teststack.c stack.c stack.h
 	gcc -g -o teststack stack.c teststack.c
 
 check: all
-	valgrind --leak-check=full ./testast
-	valgrind --leak-check=full ./testhash
-	valgrind --leak-check=full ./teststack
 	strace ./testast
 	strace ./testhash
 	strace ./teststack
+	valgrind --leak-check=full ./testast
+	valgrind --leak-check=full ./testhash
+	valgrind --leak-check=full ./teststack
 	./testast
 	./testhash
 	./teststack

@@ -44,8 +44,25 @@ void test_load() {
 	free_hashmap(map);
 }
 
+void test_sort() {
+	hashmap_t* map = new_hashmap(HASHMAP_INIT_SIZE_SMALL, HASHMAP_GROWTH_DISABLED, string_get_key, hash_string, compare_strings, NULL);
+	hashmap_add_record(map, "apples");
+	hashmap_add_record(map, "oranges");
+	hashmap_add_record(map, "boxes");
+	hashmap_add_record(map, "shoes");
+	long arraysize;
+	void **array = get_array(map, &arraysize);
+	sort_array(array, arraysize, map);
+	char **sortedstrings = (char**)array;
+	for(int i=0;i<arraysize;i++)
+		printf("%3d: %s\n", i, sortedstrings[i]);
+	free(array);
+	free_hashmap(map);
+}
+
 int main(void) {
 	test_keyvalues();
 	test_load();
+	test_sort();
 	return 0;
 }

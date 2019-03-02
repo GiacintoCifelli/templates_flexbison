@@ -35,6 +35,9 @@ void resize_hashmap(hashmap_t* map, long new_size);
 void hashmap_add_record(hashmap_t *map, void *record); /* the function calc_hash will extract the key */
 void *hashmap_get_record(hashmap_t *map, void *key);
 
+void **get_array(hashmap_t *map, long *size);
+void sort_array(void **array, long size, hashmap_t *map);
+
 /* standard hash functions */
 
 uint32_t calc_hash_binary(const uint8_t *key, int length, long seed);

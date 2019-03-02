@@ -116,6 +116,33 @@ void *hashmap_get_record(hashmap_t *map, void *key) {
 	return NULL;
 }
 
+void **get_array(hashmap_t *map, long *size) {
+	*size = map->current;
+	if(!map->current) return NULL;
+	void **array = calloc(map->current, sizeof(void*));
+	long n = 0;
+	for(long i=0;i<map->size;i++) {
+		if(map->hash[i].record)
+			array[n++] = map->hash[i].record;
+		hash_element_t *m = &map->hash[i];
+		while(m->next) {
+			if(m->next->record)
+				array[n++] = m->next->record;
+			m = m->next;
+		}
+	}
+	return array;
+}
+
+void sort_array(void **array, long size, hashmap_t *map) {
+	if(!array) return;
+	int resolve_compare(const void *a, const void *b) {
+		int ret = map->compare(map->get_key(*(void**)a), map->get_key(*(void**)b));
+		return ret;
+	}
+	qsort((void *)array, size, sizeof(void*), resolve_compare);
+}
+
 /************************************************************************/
 uint32_t calc_hash_string(const char *key, uint32_t seed) {
 	const uint8_t* name = (const uint8_t*)key;
