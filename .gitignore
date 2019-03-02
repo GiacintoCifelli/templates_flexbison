@@ -33,3 +33,6 @@ examples/automake_template/missing
 examples/automake_template/ylwrap
 examples/locations/vendfn
 examples/locations/vending
+examples/structures/testast
+examples/structures/testhash
+examples/structures/teststack

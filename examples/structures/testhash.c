@@ -44,7 +44,8 @@ void test_load() {
 	free_hashmap(map);
 }
 
-void main() {
+int main(void) {
 	test_keyvalues();
 	test_load();
+	return 0;
 }

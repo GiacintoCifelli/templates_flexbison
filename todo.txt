@@ -11,8 +11,8 @@ x use locations
 x automake template
 
 ^ use hash tables
-. use stacks
-. use lists
+^ use stacks
+/ use lists (sllists, dllists)
 . use sorting
 
 ^ use AST (abstract syntax tree)
