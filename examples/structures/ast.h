@@ -53,6 +53,8 @@ struct ast_t {
 			void *v;
 		};
 	};
+	ast_t *next;
+	ast_t *prev;
 };
 
 ast_t *new_ast(ast_type_t type, ...);
