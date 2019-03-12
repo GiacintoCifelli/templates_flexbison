@@ -8,6 +8,7 @@ dllist_t *new_dllist(void *(*get_key)(void *record), int (*compare)(void *keyA, 
 	dllist->get_key = get_key;
 	dllist->compare = compare;
 	dllist->free_record = free_record;
+	return dllist;
 }
 
 void free_dllist(dllist_t *dllist) {
