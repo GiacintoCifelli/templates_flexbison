@@ -14,9 +14,9 @@ typedef struct {
 
 
 stack_t *new_stack();
-void free_stack(stack_t *stack, void(*free_elem)(void *));
+void free_stack(stack_t *stack, void(*free_record)(void *record));
 
 void stack_push(stack_t *, void *record);
-void *stack_pop(stack_t *);
+void *stack_pop(stack_t *stack);
 
 #endif /* _STACK_H_ */

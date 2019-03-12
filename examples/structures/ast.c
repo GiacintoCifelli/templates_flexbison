@@ -17,7 +17,7 @@ ast_t *new_ast(ast_type_t type, ...) {
 		a->d = va_arg(args, double);
 		break;
 	case AST_TYPE_STRING:
-		a->s = va_arg(args, char *); /* no strdup! */
+		a->s = va_arg(args, char *); /* no strdup here! */
 		break;
 	case AST_TYPE_CHILD:
 		a->operation = va_arg(args, int);

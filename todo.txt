@@ -10,16 +10,16 @@ x use locations
 
 x automake template
 
-data structures:
+- data structures:
     - not integrated in actual flex/bison example.
     - reentrant
     - not thread-safe:
         no need for flex/bison use (because a sigle parser synchs the calls)
         but for generic use need to add guard mutexes
-^ use AST (abstract syntax tree)
-^ use hash tables: started
-> use sorting (using glibc qsort, enough for now)
-^ use stacks
-/ use lists (simple-linked lists, double-linked lists) -> not in this project, sorry
+x AST (abstract syntax tree)
+x hash tables
+x sorting (using glibc qsort, enough for now)
+x stacks
+x lists (double-linked lists)
 
 / use GLR -> no need for these templates, just a parameter for bison. more for a real grammar use

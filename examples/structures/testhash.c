@@ -51,8 +51,8 @@ void test_sort() {
 	hashmap_add_record(map, "boxes");
 	hashmap_add_record(map, "shoes");
 	long arraysize;
-	void **array = get_array(map, &arraysize);
-	sort_array(array, arraysize, map);
+	void **array = get_array_from_hashmap(map, &arraysize);
+	sort_array_from_hashmap(array, arraysize, map);
 	char **sortedstrings = (char**)array;
 	for(int i=0;i<arraysize;i++)
 		printf("%3d: %s\n", i, sortedstrings[i]);

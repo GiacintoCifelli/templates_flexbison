@@ -20,6 +20,7 @@ hashmap_t *new_hashmap(long initial_size, long growth, void *(*get_key)(void *re
 }
 
 void free_hashmap(hashmap_t *map) {
+	if(!map) return;
 	for(long i=0; i<map->size; i++) {
 		if(map->hash[i].record) {
 			if(map->free_record)
@@ -116,8 +117,10 @@ void *hashmap_get_record(hashmap_t *map, void *key) {
 	return NULL;
 }
 
-void **get_array(hashmap_t *map, long *size) {
-	*size = map->current;
+void **get_array_from_hashmap(hashmap_t *map, long *size) {
+	if(!map) return NULL;
+	if(size)
+		*size = map->current;
 	if(!map->current) return NULL;
 	void **array = calloc(map->current, sizeof(void*));
 	long n = 0;
@@ -134,13 +137,16 @@ void **get_array(hashmap_t *map, long *size) {
 	return array;
 }
 
-void sort_array(void **array, long size, hashmap_t *map) {
+void sort_array(void **array, long size, void *(*get_key)(void *record), int (*compare)(void *recordA, void *recordB)) {
 	if(!array) return;
 	int resolve_compare(const void *a, const void *b) {
-		int ret = map->compare(map->get_key(*(void**)a), map->get_key(*(void**)b));
-		return ret;
+		return compare(get_key(*(void**)a), get_key(*(void**)b));
 	}
 	qsort((void *)array, size, sizeof(void*), resolve_compare);
+}
+
+void sort_array_from_hashmap(void **array, long size, hashmap_t *map) {
+	sort_array(array, size, map->get_key, map->compare);
 }
 
 /************************************************************************/

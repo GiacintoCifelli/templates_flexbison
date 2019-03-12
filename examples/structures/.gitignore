@@ -1,3 +1,7 @@
 testast
 testhash
 teststack
+testdllist
+*.o
+*.i
+*.s
