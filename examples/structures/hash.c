@@ -104,6 +104,39 @@ void hashmap_add_record(hashmap_t *map, void *record) {
 	}
 }
 
+void hashmap_remove_record(hashmap_t *map, void *key) {
+	uint32_t h = map->calc_hash(key);
+	uint32_t slot = h % map->size;
+	if(!map->hash[slot].record) return; /* not found */
+	if(hashmap_compare(map, hashmap_get_key(map, map->hash[slot].record), key) == 0) { /* found in the map array */
+		if(map->free_record)
+			map->free_record(map->hash[slot].record);
+		if(map->hash[slot].next) {
+			hash_element_t *m = map->hash[slot].next;
+			map->hash[slot].record = m->record;
+			map->hash[slot].next = m->next;
+			free(m);
+		} else
+			map->hash[slot].record = NULL;
+		map->current--;
+	} else if(map->hash[slot].next) {
+		hash_element_t *m = &map->hash[slot];
+		while(m->next) {
+			if(hashmap_compare(map, hashmap_get_key(map, m->next->record), key) == 0) { /* found in the side chain */
+				if(map->free_record)
+					map->free_record(m->next->record);
+				hash_element_t *tmp = m->next;
+				m->next = m->next->next;
+				free(tmp);
+				map->current--;
+				return;
+			}
+			m = m->next;
+		}
+		/* not found, return */
+	}
+}
+
 void *hashmap_get_record(hashmap_t *map, void *key) {
 	uint32_t h = map->calc_hash(key);
 	uint32_t slot = h % map->size;

@@ -39,6 +39,7 @@ hashmap_t *new_hashmap(long initial_size, long growth, void *(*get_key)(void *re
 void free_hashmap(hashmap_t *map);
 void resize_hashmap(hashmap_t* map, long new_size);
 void hashmap_add_record(hashmap_t *map, void *record); /* the function calc_hash will extract the key */
+void hashmap_remove_record(hashmap_t *map, void *key);
 void *hashmap_get_record(hashmap_t *map, void *key);
 
 void **get_array_from_hashmap(hashmap_t *map, long *size);
